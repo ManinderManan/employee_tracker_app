@@ -3,9 +3,10 @@ const mysql = require("mysql");
 const cTable = require("console.table");
 const db = require(".");
 
+const PORT = process.env.PORT || 3001;
+
 const connection = mysql.createConnection({
       host: 'localhost',
-      port: 3001,
       user: 'root',
       password: 'password',
       database: 'employee_info_db',
