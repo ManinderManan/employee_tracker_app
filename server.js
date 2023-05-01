@@ -1,12 +1,11 @@
-const inquirer = require("inquirer");
 const mysql = require("mysql");
-const cTable = require("console.table");
-const db = require(".");
+const inquirer = require("inquirer");
+// const Ctable = require("console.table");
 
-const PORT = process.env.PORT || 3001;
 
 const connection = mysql.createConnection({
       host: 'localhost',
+      port: 3306,
       user: 'root',
       password: 'password',
       database: 'employee_info_db',
@@ -15,11 +14,12 @@ const connection = mysql.createConnection({
       if (err) throw err;
       console.log("Connected with ID: " + connection.threadId);
     });
+
+startScreen();
    
 
 function startScreen() {
-   inquirer
-      .prompt({
+   inquirer.prompt({
          type: "list",
          choices: [
             "Add department",
@@ -76,6 +76,7 @@ function addDepartment() {
          if (err) throw err; 
          console.table(res)
          startScreen()
+
       })
    })
 }
@@ -101,7 +102,7 @@ function addRole() {
       ])
       .then(function(answer){
          connection.query("INSERT INTO role (title, salary, department_id) VALUE(?, ?, ?)", [answer.roleName, answer.salaryTotal, answer.deptID], function(err, res) {
-            if (err) throw (err);
+            if (err) throw err;
             console.table(res);
             startScreen();
          });
@@ -148,7 +149,7 @@ function updateEmployee() {
       {
          type: "input",
          message: "Which emplyee would you like to update?",
-         name: "empUpdate"
+         name: "eeUpdate"
       },
       {
       type: "input",
@@ -158,7 +159,7 @@ function updateEmployee() {
    ])
    .then(function(answer) {
 
-      connection.query('UPDATE employee SET role_id=? WHERE first_name=?', [answer.updateRole, answer.empUpdate], function(err, res) {
+      connection.query('UPDATE employee SET role_id=? WHERE first_name=?', [answer.updateRole, answer.eeUpdate], function(err, res) {
          if (err) throw err;
          console.table(res);
          startScreen();
@@ -181,6 +182,15 @@ function viewRoles() {
       if (err) throw err;
       console.table(res);
       startScreen();
+   });
+}
+
+function viewEmployees() {
+   let query = "SELECT * FROM employee";
+   connection.query(query, function(err, res) {
+      if (err) throw err;
+      console.table(res);
+      startScreen;
    });
 }
 
