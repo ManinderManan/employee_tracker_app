@@ -8,13 +8,12 @@ const connection = mysql.createConnection({
       port: 3306,
       user: 'root',
       password: 'password',
-      database: 'employee_info_db',
+      database: 'employee_tracker_db',
     }); 
     connection.connect(function(err){
       if (err) throw err;
       console.log("Connected with ID: " + connection.threadId);
     });
-
 startScreen();
    
 
@@ -27,7 +26,7 @@ function startScreen() {
             "Add employee",
             "View departments",
             "View roles",
-            "View emplyees",
+            "View employees",
             "Update employee role",
             "Quit"
          ],
@@ -65,14 +64,13 @@ function startScreen() {
 }
 
 function addDepartment() {
-
    inquirer.prompt({
       type: "input",
       message: "What is the name of the department?",
       name: "deptName"
    }).then(function(answer){
 
-      connection.query("INSERT INTO department (name) VALUE (?)", [answer, deptName], function(err, res) {
+      connection.query("INSERT INTO department (name) VALUE (?)", [answer.deptName], function(err, res) {
          if (err) throw err; 
          console.table(res)
          startScreen()
@@ -135,7 +133,7 @@ function addEmployee() {
       ])
       .then(function(answer){
 
-         connection.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [answer.empFirstName, answer.empLastName, answer.roleID, answer.managerID], function(err, res) {
+         connection.query("INSERT INTO employee (FirstName, LastName, RoleID, ManagerID) VALUES (?, ?, ?, ?)", [answer.empFirstName, answer.empLastName, answer.roleID, answer.managerID], function(err, res) {
             if (err) throw err; 
             console.table(res);
             startScreen();
@@ -144,8 +142,7 @@ function addEmployee() {
 }
 
 function updateEmployee() {
-   inquirer
-   .prompt([
+   inquirer.prompt([
       {
          type: "input",
          message: "Which emplyee would you like to update?",
