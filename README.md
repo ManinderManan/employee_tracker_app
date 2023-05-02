@@ -30,6 +30,11 @@ Once the dependancies have all been installed, you may access the .sql files wit
 
 ![Gif of Terminal Running](./assets/Employee_Tracker_GIF.gif)
 
+## Deployment 
+
+https://github.com/ManinderManan/employee_tracker_app
+
+
 ## License
 
 MIT License
@@ -53,3 +58,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+## References 
+
+UDEMY
+
+https://github.com/Nikstar-1/Employee-Tracker
