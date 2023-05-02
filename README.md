@@ -22,8 +22,11 @@ This project creates a an application within the command-line interface (CLI) wh
 
 Once the dependancies have all been installed, you may access the .sql files within the db folder. Open an integrated terminal within the db folder and run the mysql command to create our database (employee_tracker_db). Both the schema.sql and seeds.sql files will need to be sourced into the database so our table will be populated with the information. Once the sql files have been sourced, you may exit the sql terminal. Next you must open an intergrated termianl within the server.js file to initialize the node server. Your list will now populate with whatver information you add in as well as the pre-saved information. 
 
+## Screenshot
+
 ![Screenshot of Employees table](./assets/Employee_Tracker.png)
 
+## Demo 
 
 ![Gif of Terminal Running](./assets/Employee_Tracker_GIF.gif)
 
